@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: redis-token-management
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/redis_spring}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: ${DDL_AUTO:update}
+    properties:
+      hibernate:
+        format_sql: true
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      timeout: ${REDIS_TIMEOUT:2s}
+
+server:
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+
+jwt:
+  # Base64-encoded secret; must decode to at least 32 bytes.
+  secret: ${JWT_SECRET}
+  issuer: ${JWT_ISSUER:redis-token-management}
+  expiration: ${JWT_ACCESS_EXPIRATION_MS:900000}
+  refresh-expiration: ${JWT_REFRESH_EXPIRATION_MS:604800000}

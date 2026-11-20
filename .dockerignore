@@ -1,0 +1,20 @@
+# Version control and IDE metadata
+.git/
+.idea/
+.vscode/
+
+# Local build output
+target/
+**/target/
+build/
+.gradle/
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Logs and OS files
+*.log
+.DS_Store
+Thumbs.db
